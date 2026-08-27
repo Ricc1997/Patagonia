@@ -1,0 +1,16 @@
+{
+  "name": "Patagonia — Itinerario",
+  "short_name": "Patagonia",
+  "description": "Itinerario del viaggio in Patagonia, 26 dicembre - 5 gennaio.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#eef7fb",
+  "theme_color": "#eef7fb",
+  "lang": "it",
+  "icons": [
+    { "src": "icon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
