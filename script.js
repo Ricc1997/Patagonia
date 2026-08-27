@@ -8,17 +8,34 @@ const ICONS = {
   mountain: "⛰️"
 };
 
+const FLAGS = { AR: "🇦🇷", CL: "🇨🇱" };
+const COUNTRY_NAMES = { AR: "Argentina", CL: "Cile" };
+
 let currentIndex = 0;
+
+function flagsFor(d) {
+  return d.countryFrom ? FLAGS[d.countryFrom] + FLAGS[d.country] : FLAGS[d.country];
+}
+
+function countryLabel(d) {
+  return d.countryFrom
+    ? `${COUNTRY_NAMES[d.countryFrom]} → ${COUNTRY_NAMES[d.country]}`
+    : COUNTRY_NAMES[d.country];
+}
 
 function renderTabs() {
   const bar = document.getElementById("tabs-scroll");
   bar.innerHTML = TRIP.days
     .map(
       (d, i) => `
-      <button class="tab" role="tab" data-index="${i}" id="tab-${i}"
-              aria-selected="false" aria-controls="day-panel">
-        <span class="tab-day">Giorno ${d.day}</span>
-        <span class="tab-date">${d.tabLabel}</span>
+      <button class="tab c-${d.country}" role="tab" data-index="${i}" id="tab-${i}"
+              aria-selected="false" aria-controls="day-panel"
+              title="Giorno ${d.day} · ${countryLabel(d)}">
+        <span class="tab-flag" aria-hidden="true">${flagsFor(d)}</span>
+        <span class="tab-text">
+          <span class="tab-day">Giorno ${d.day}</span>
+          <span class="tab-date">${d.tabLabel}</span>
+        </span>
       </button>`
     )
     .join("");
@@ -59,7 +76,7 @@ function renderPanel(i) {
 
   const activities = d.activities.length
     ? `<div class="activities">${d.activities.map(activityHTML).join("")}</div>`
-    : `<p class="empty-note">Nessuna tappa fissata: giornata libera.</p>`;
+    : `<p class="empty-note">🌤️ Giornata libera, nessuna tappa fissata.</p>`;
 
   const prev = TRIP.days[i - 1];
   const next = TRIP.days[i + 1];
@@ -69,7 +86,10 @@ function renderPanel(i) {
       <div class="panel-head">
         <div class="panel-badge">${ICONS[d.icon] || "📍"}</div>
         <div>
-          <div class="panel-eyebrow">Giorno ${d.day} · ${d.dateLabel}</div>
+          <div class="panel-eyebrow">
+            <span aria-hidden="true">${flagsFor(d)}</span>
+            <span>Giorno ${d.day} · ${d.dateLabel} · ${countryLabel(d)}</span>
+          </div>
           <h2 class="panel-title">${d.title}</h2>
           <div class="panel-location">${d.location}</div>
         </div>
@@ -95,6 +115,10 @@ function renderPanel(i) {
 function selectDay(i) {
   if (i < 0 || i >= TRIP.days.length) return;
   currentIndex = i;
+  const d = TRIP.days[i];
+
+  // ridipinge l'accento della pagina col colore del paese
+  document.body.dataset.country = d.country;
 
   document.querySelectorAll(".tab").forEach((t, idx) => {
     const active = idx === i;
@@ -107,7 +131,7 @@ function selectDay(i) {
   if (activeTab) activeTab.scrollIntoView({ block: "nearest", inline: "center" });
 
   renderPanel(i);
-  history.replaceState(null, "", "#giorno-" + TRIP.days[i].day);
+  history.replaceState(null, "", "#giorno-" + d.day);
 }
 
 function setupTabs() {

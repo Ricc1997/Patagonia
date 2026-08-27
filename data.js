@@ -7,6 +7,7 @@ const TRIP = {
   days: [
     {
       day: 1,
+      country: "AR",
       dateLabel: "26 dicembre",
       tabLabel: "26 dic",
       title: "Partenza",
@@ -37,6 +38,7 @@ const TRIP = {
     },
     {
       day: 2,
+      country: "AR",
       dateLabel: "28 dicembre",
       tabLabel: "28 dic",
       title: "Visita di Buenos Aires",
@@ -73,6 +75,7 @@ const TRIP = {
     },
     {
       day: 3,
+      country: "AR",
       dateLabel: "29 dicembre",
       tabLabel: "29 dic",
       title: "El Calafate",
@@ -99,6 +102,7 @@ const TRIP = {
     },
     {
       day: 4,
+      country: "AR",
       dateLabel: "30 dicembre",
       tabLabel: "30 dic",
       title: "Ghiacciaio Perito Moreno",
@@ -123,6 +127,8 @@ const TRIP = {
     },
     {
       day: 5,
+      country: "CL",
+      countryFrom: "AR",
       dateLabel: "31 dicembre",
       tabLabel: "31 dic",
       title: "Puerto Natales",
@@ -143,6 +149,7 @@ const TRIP = {
     },
     {
       day: 6,
+      country: "CL",
       dateLabel: "1 gennaio",
       tabLabel: "1 gen",
       title: "Torres del Paine",
@@ -170,6 +177,7 @@ const TRIP = {
     },
     {
       day: 7,
+      country: "CL",
       dateLabel: "2 gennaio",
       tabLabel: "2 gen",
       title: "Puerto Natales → Santiago",
@@ -186,6 +194,7 @@ const TRIP = {
     },
     {
       day: 8,
+      country: "CL",
       dateLabel: "3 gennaio",
       tabLabel: "3 gen",
       title: "Santiago del Cile",
@@ -207,6 +216,7 @@ const TRIP = {
     },
     {
       day: 9,
+      country: "CL",
       dateLabel: "4 gennaio",
       tabLabel: "4 gen",
       title: "Santiago",
@@ -218,6 +228,7 @@ const TRIP = {
     },
     {
       day: 10,
+      country: "CL",
       dateLabel: "5 gennaio",
       tabLabel: "5 gen",
       title: "Rientro",
