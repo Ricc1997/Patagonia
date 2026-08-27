@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Patagonia 2026 — Itinerario</title>
+<meta name="description" content="Itinerario del viaggio in Patagonia, 26 dicembre - 5 gennaio: Buenos Aires, El Calafate, Puerto Natales, Torres del Paine, Santiago del Cile." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏔️</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="hero">
+  <svg class="hero-mountains" viewBox="0 0 1200 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="0,200 0,120 150,40 260,110 340,20 460,120 560,60 700,130 800,50 900,140 1020,70 1120,130 1200,90 1200,200" fill="#0b3346" opacity="0.9"/>
+    <polygon points="0,200 0,150 120,90 220,150 320,70 420,150 540,100 650,160 760,90 880,160 980,110 1080,160 1200,130 1200,200" fill="#124a5f" opacity="0.95"/>
+    <polygon points="150,40 190,70 210,55 230,80 260,110" fill="#eaf6fa" opacity="0.5"/>
+    <polygon points="340,20 375,55 395,42 415,68 460,120" fill="#eaf6fa" opacity="0.55"/>
+    <polygon points="800,50 830,80 850,68 870,95 900,140" fill="#eaf6fa" opacity="0.5"/>
+  </svg>
+  <div class="hero-content">
+    <span class="hero-eyebrow">🧊 26 dicembre — 5 gennaio</span>
+    <h1 id="trip-title">Patagonia</h1>
+    <p class="subtitle" id="trip-subtitle"></p>
+    <div class="hero-meta">
+      <span class="pill countdown-pill" id="countdown-pill">⏳ tra <strong id="countdown-value">—</strong></span>
+      <span class="pill">🕓 <span id="tz-note"></span></span>
+    </div>
+  </div>
+</header>
+
+<div class="tabs-bar">
+  <div class="tabs-scroll" id="tabs-scroll" role="tablist" aria-label="Giorni del viaggio"></div>
+</div>
+
+<main class="panel-wrap">
+  <div id="day-panel" role="tabpanel"></div>
+</main>
+
+<footer class="footer">
+  Usa le frecce ← → o i tab in alto per spostarti tra i giorni · Buon viaggio <span class="heart">♥</span>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
