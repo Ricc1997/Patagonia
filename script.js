@@ -100,7 +100,7 @@ function renderPanel(i) {
       ${activities}
       <div class="panel-nav">
         <button class="nav-btn" id="btn-prev" ${prev ? "" : "disabled"}>
-          ${prev ? `← ${prev.dateLabel} · ${prev.title}` : "← Inizio"}
+          ${prev ? `← ${prev.dateLabel} · ${prev.title}` : "Inizio"}
         </button>
         <button class="nav-btn" id="btn-next" ${next ? "" : "disabled"}>
           ${next ? `${next.dateLabel} · ${next.title} →` : "Fine"}
