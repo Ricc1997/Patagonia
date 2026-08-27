@@ -103,7 +103,7 @@ function renderPanel(i) {
           ${prev ? `← ${prev.dateLabel} · ${prev.title}` : "← Inizio"}
         </button>
         <button class="nav-btn" id="btn-next" ${next ? "" : "disabled"}>
-          ${next ? `${next.dateLabel} · ${next.title} →` : "Fine →"}
+          ${next ? `${next.dateLabel} · ${next.title} →` : "Fine"}
         </button>
       </div>
     </div>`;
