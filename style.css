@@ -516,3 +516,140 @@ body {
 }
 
 .footer .heart { color: var(--cl); }
+
+/* ---------- Consigli del giorno ---------- */
+.tips {
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 2px dashed var(--border);
+}
+
+.tips-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--accent-deep);
+  margin: 0 0 14px;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+
+.tip {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--tip-color, var(--accent));
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+}
+
+.tip-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--tip-color, var(--accent));
+  margin-bottom: 6px;
+}
+
+.tip-text {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+/* un colore per tipo di consiglio */
+.tip.t-pratico  { --tip-color: #3d9ad6; }
+.tip.t-chicca   { --tip-color: #7d5bc6; }
+.tip.t-mangiare { --tip-color: #2f9e7a; }
+.tip.t-pianoB   { --tip-color: #8a94a6; }
+.tip.t-avviso   { --tip-color: #d4762f; }
+
+/* gli avvisi pesano di più: fondo ambrato e testo pieno */
+.tip.t-avviso {
+  background: var(--sun-soft);
+  border-color: rgba(212, 118, 47, 0.35);
+}
+
+.tip.t-avviso .tip-text { color: var(--text); font-weight: 600; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .tip.t-pratico  { --tip-color: #7cc3ea; }
+  :root:not([data-theme="light"]) .tip.t-chicca   { --tip-color: #b49bea; }
+  :root:not([data-theme="light"]) .tip.t-mangiare { --tip-color: #62c9a5; }
+  :root:not([data-theme="light"]) .tip.t-pianoB   { --tip-color: #aab5c4; }
+  :root:not([data-theme="light"]) .tip.t-avviso   { --tip-color: #f0a465; }
+}
+
+:root[data-theme="dark"] .tip.t-pratico  { --tip-color: #7cc3ea; }
+:root[data-theme="dark"] .tip.t-chicca   { --tip-color: #b49bea; }
+:root[data-theme="dark"] .tip.t-mangiare { --tip-color: #62c9a5; }
+:root[data-theme="dark"] .tip.t-pianoB   { --tip-color: #aab5c4; }
+:root[data-theme="dark"] .tip.t-avviso   { --tip-color: #f0a465; }
+
+/* ---------- Alloggio cliccabile ---------- */
+.overnight-box.is-link {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  max-width: 100%;
+}
+
+.overnight-box.is-link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+
+.overnight-box.is-link:focus-visible {
+  outline: 3px solid var(--accent-ring);
+  outline-offset: 2px;
+}
+
+.stay-icon { font-size: 1.1rem; line-height: 1; flex: 0 0 auto; }
+
+.stay-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.stay-top {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: var(--accent-deep);
+  line-height: 1.2;
+}
+
+.stay-name {
+  font-size: 0.79rem;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+.stay-note {
+  font-size: 0.73rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.stay-arrow {
+  flex: 0 0 auto;
+  font-size: 0.9rem;
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overnight-box.is-link:hover { transform: none; }
+}

@@ -9,6 +9,14 @@ const ICONS = {
 };
 
 const FLAGS = { AR: "🇦🇷", CL: "🇨🇱" };
+
+const TIP_META = {
+  pratico:  { icona: "🧭", etichetta: "Pratico" },
+  chicca:   { icona: "💎", etichetta: "Chicca" },
+  mangiare: { icona: "🍽️", etichetta: "Mangiare" },
+  pianoB:   { icona: "🌧️", etichetta: "Piano B" },
+  avviso:   { icona: "⚠️", etichetta: "Attenzione" }
+};
 const COUNTRY_NAMES = { AR: "Argentina", CL: "Cile" };
 
 let currentIndex = 0;
@@ -53,6 +61,25 @@ function activityHTML(a) {
     </div>`;
 }
 
+function tipsHTML(tips) {
+  if (!tips || !tips.length) return "";
+  const items = tips
+    .map(t => {
+      const meta = TIP_META[t.tipo] || { icona: "•", etichetta: "Consiglio" };
+      return `
+      <div class="tip t-${t.tipo}">
+        <div class="tip-label"><span aria-hidden="true">${meta.icona}</span> ${meta.etichetta}</div>
+        <div class="tip-text">${t.testo}</div>
+      </div>`;
+    })
+    .join("");
+  return `
+    <section class="tips">
+      <h3 class="tips-title">Consigli del giorno</h3>
+      <div class="tips-grid">${items}</div>
+    </section>`;
+}
+
 function renderPanel(i) {
   const d = TRIP.days[i];
 
@@ -65,7 +92,18 @@ function renderPanel(i) {
     : "";
 
   const overnight = d.overnight
-    ? `<div class="overnight-box">🛏️ Notte a ${d.overnight}</div>`
+    ? (d.stay
+        ? `<a class="overnight-box is-link" href="${d.stay.url}" target="_blank" rel="noopener">
+             <span class="stay-icon" aria-hidden="true">🛏️</span>
+             <span class="stay-body">
+               <span class="stay-top">Notte a ${d.overnight}</span>
+               <span class="stay-name">${d.stay.nome} · ${d.stay.zona}</span>
+               ${d.stay.periodo ? `<span class="stay-note">📅 ${d.stay.periodo}</span>` : ""}
+               ${d.stay.note ? `<span class="stay-note">🔑 ${d.stay.note}</span>` : ""}
+             </span>
+             <span class="stay-arrow" aria-hidden="true">↗</span>
+           </a>`
+        : `<div class="overnight-box">🛏️ Notte a ${d.overnight}</div>`)
     : "";
 
   const infoRow = flight || overnight ? `<div class="info-row">${flight}${overnight}</div>` : "";
@@ -98,6 +136,7 @@ function renderPanel(i) {
       ${d.intro ? `<p class="panel-intro">${d.intro}</p>` : ""}
       ${link}
       ${activities}
+      ${tipsHTML(d.tips)}
       <div class="panel-nav">
         <button class="nav-btn" id="btn-prev" ${prev ? "" : "disabled"}>
           ${prev ? `${prev.dateLabel} · ${prev.title}` : "Inizio"}
