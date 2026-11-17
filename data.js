@@ -167,7 +167,7 @@ const TRIP = {
       flight: {
         route: "Buenos Aires (AEP) → El Calafate",
         carrier: "3h 20m di volo",
-        depart: "4:30",
+        depart: "4:45",
         arrive: "7:47"
       },
       overnight: "El Calafate (1)",
@@ -192,7 +192,7 @@ const TRIP = {
       tips: [
         {
           tipo: "avviso",
-          testo: "Il volo parte alle 4:30 del mattino da Aeroparque: significa lasciare l'alloggio a Buenos Aires intorno all'1:30 di notte. Organizzate il transfer la sera prima e verificate che la vostra sistemazione permetta il check-out notturno."
+          testo: "Il volo parte alle 4:45 del mattino da Aeroparque: significa lasciare l'alloggio a Buenos Aires intorno all'1:30 di notte. Organizzate il transfer la sera prima e verificate che la vostra sistemazione permetta il check-out notturno."
         },
         {
           tipo: "pratico",
